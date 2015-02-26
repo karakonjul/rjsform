@@ -94,7 +94,7 @@
 			// try to find container
 			var container = self.element.find($(this).closest('[data-form-group]'));
 			if (container.size()==0) container = self.element;
-			var value = $(this).attr('value');console.log(value);
+			var value = $(this).attr('value');
 			self._getInputsByName(container, $(this).attr('data-form-name')).each(function(){
 				this.checked = ($(this).attr('value') == value);
 			});
