@@ -20,10 +20,38 @@ jQuery(function($){
 					.removeClass('item-template')
 					.show();
 			});
-		} catch (e) {
-			console.log(e);
+		} catch (error) {
+			console.log(error);
 		}
 	}; // demo_constructor
+
+	var demo_constructor_2 = function(data){
+		var template = $(this).find('.item-template').first();
+		var list = template.parent();
+		template.hide();
+		list.children().not(template).remove();
+
+		console.log(data[template.attr('data-form-group')]);
+
+		try {
+			Object.keys(data).forEach(function(key){
+				var item = template.clone();
+				item
+					.find('input')
+					.attr('data-form-name', key)
+					.val(data[key])
+					.end()
+					.find('.title')
+					.text(key)
+					.end()
+					.appendTo(list)
+					.removeClass('item-template')
+					.show();
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}; // demo_constructor_2
 
 	var demo_data = {
 		nonexistent : "bla",
@@ -37,6 +65,12 @@ jQuery(function($){
 			v2 : 'v2 value',
 			v3 : 'v3 value'
 		},
+		constructor_data_2 : [
+			{"enabled":true,"type":2,"value":"blabla"},
+			{"enabled":true,"type":1,"value":"hohoho"},
+			{"enabled":false,"type":3,"value":"leleee"},
+			{"enabled":false,"type":2,"value":"maleee"}
+		],
 		group1 : {
 			normalinput : 'test group',
 			singleselect : 3,
@@ -49,11 +83,18 @@ jQuery(function($){
 	$('#form_container').rjsform({
 		data : {},
 		constructors : {
-			demo_constr : demo_constructor
+			demo_constr : demo_constructor,
+			demo_constr_2 : demo_constructor_2
 		}
 	});
 
 	$('#form_container').rjsform('setData', demo_data);
+
+	// auto get data on form change
+	$('#form_container').on('change', 'input,select,textarea', function(event){
+		$('#json_viewer textarea[name="json"]').val(
+			JSON.stringify($('#form_container').rjsform('getData'), null, '  '));
+	});
 
 	// get data
 	$('#json_viewer input[name="get"]').click(function(){

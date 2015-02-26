@@ -60,6 +60,14 @@
 						<label><input type="radio" data-form-name="radio" value="3" /> three</label>
 					</td>
 				</tr>
+				<tr>
+					<td>Second radio group (conflict check):</td>
+					<td>
+						<label><input type="radio" data-form-name="radio2" value="1" /> one</label>
+						<label><input type="radio" data-form-name="radio2" value="2" /> two</label>
+						<label><input type="radio" data-form-name="radio2" value="3" /> three</label>
+					</td>
+				</tr>
 			</table>
 
 			<fieldset data-form-group="group1">
@@ -105,7 +113,20 @@
 			</fieldset>
 
 			<fieldset data-form-group="constructor_data" data-form-constructor="demo_constr">
-				<legend>constructor</legend>
+				<legend>Simple constructor</legend>
+				<table>
+					<tbody>
+						<tr class="item-template">
+							<th class="title"></th>
+							<td><input type="text" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+
+			<fieldset data-form-constructor="demo_constr_2" data-form-constructor-key="constructor_data_2">
+				<legend>Array constructor</legend>
+				<p>Data is an array</p>
 				<table>
 					<tbody>
 						<tr class="item-template">
