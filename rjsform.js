@@ -114,7 +114,7 @@
 					if (data.hasOwnProperty(group)) {
 						constructor.call(this, data[group]);
 					} else {
-						constructor.call(this);
+						constructor.call(this, {});
 					}
 				} else {
 					constructor.call(this, data);
