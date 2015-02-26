@@ -5,9 +5,118 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="demo.css">
 		<script src="jquery-2.1.3.min.js"></script>
+		<script src="jquery-ui-1.11.3.min.js"></script>
 		<script src="rjsform.js"></script>
+		<script src="demo.js"></script>
 	</head>
 	<body>
 		<h1>RJSForm Demo</h1>
+
+		<div id="json_viewer">
+			<h2>Form data viewer</h2>
+			<p><textarea name="json" rows="40"></textarea></p>
+			<p>
+				<input type="button" name="get" value="Get data">
+				<input type="button" name="set" value="Set data">
+			</p>
+		</div>
+
+		<div id="form_container">
+
+			<table border="1">
+				<tr>
+					<td data-form-for="normalinput">Normal input:</td>
+					<td><input type="text" data-form-name="normalinput" /></td>
+				</tr>
+				<tr>
+					<td data-form-for="singleselect">Single select:</td>
+					<td>
+						<select data-form-name="singleselect">
+							<option value="1">one</option>
+							<option value="2">two</option>
+							<option value="3">three</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Multi select:</td>
+					<td>
+						<select data-form-name="multiselect" size="3" multiple="multiple">
+							<option value="1">one</option>
+							<option value="2">two</option>
+							<option value="3">three</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Checkbox:</td>
+					<td><label><input type="checkbox" data-form-name="checkbox" /> checkbox</label></td>
+				</tr>
+				<tr>
+					<td>Radio group:</td>
+					<td>
+						<label><input type="radio" data-form-name="radio" value="1" /> one</label>
+						<label><input type="radio" data-form-name="radio" value="2" /> two</label>
+						<label><input type="radio" data-form-name="radio" value="3" /> three</label>
+					</td>
+				</tr>
+			</table>
+
+			<fieldset data-form-group="group1">
+				<legend>group1</legend>
+				<table border="1">
+					<tr>
+						<td>Normal input:</td>
+						<td><input type="text" data-form-name="normalinput" /></td>
+					</tr>
+					<tr>
+						<td>Single select:</td>
+						<td>
+							<select data-form-name="singleselect">
+								<option value="1">one</option>
+								<option value="2">two</option>
+								<option value="3">three</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Multi select:</td>
+						<td>
+							<select data-form-name="multiselect" size="3" multiple="multiple">
+								<option value="1">one</option>
+								<option value="2">two</option>
+								<option value="3">three</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Checkbox:</td>
+						<td><label><input type="checkbox" data-form-name="checkbox" /> checkbox</label></td>
+					</tr>
+					<tr>
+						<td>Radio group:</td>
+						<td>
+							<label><input type="radio" data-form-name="radio" value="1" /> one</label>
+							<label><input type="radio" data-form-name="radio" value="2" /> two</label>
+							<label><input type="radio" data-form-name="radio" value="3" /> three</label>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+
+			<fieldset data-form-group="constructor_data" data-form-constructor="demo_constr">
+				<legend>constructor</legend>
+				<table>
+					<tbody>
+						<tr class="item-template">
+							<th class="title"></th>
+							<td><input type="text" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+
+		</div>
+
 	</body>
 </html>

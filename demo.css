@@ -1,1 +1,41 @@
 @charset "UTF-8";
+
+/* Import Open Sans and Ubuntu Mono */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic|Ubuntu+Mono&subset=latin,cyrillic);
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+
+}
+
+body {
+	font-family: 'Open Sans', Verdana, sans-serif;
+	font-size: 14px;
+}
+
+* {
+	font-family: inherit;
+}
+
+h1 {
+	font-size: 180%;
+}
+
+h2 {
+	font-size: 140%;
+}
+
+#json_viewer {
+	float: right;
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+#json_viewer textarea {
+	width: 400px;
+	font-family: 'Ubuntu Mono', Consolas, monospace;
+}
