@@ -1,13 +1,9 @@
 
 (function($){
 
-	$.fn.rlibradiogroup = function(){
-		var elements = this.filter(':input[type="radio"]');
-		return elements.on('change', function(e){
-			elements.prop('checked', false);
-			$(this).prop('checked', true);
-		});
-	};
+	if (typeof($.fn.rjsform)!='undefined') {
+		throw "rlib.rjsform is being loaded twice!";
+	}
 
 	$.widget('rlib.rjsform', {
 		options : {
@@ -67,6 +63,10 @@
 				});
 		},
 
+		/**
+		 * Searches for a form group with this name within the
+		 * given container, without going into other form groups
+		 */
 		_getFormGroupByName : function(container, name){
 			return this._findNoRecursive(container, '[data-form-group]')
 				.filter(function(){
@@ -74,12 +74,30 @@
 				});
 		},
 
+		/**
+		 * Handles label clicking by moving focus to the referenced input
+		 */
 		_labelClickHandler : function(event){
 			var self = event.data;
 			// try to find container
 			var container = self.element.find($(this).closest('[data-form-group]'));
 			if (container.size()==0) container = self.element;
 			self._getInputsByName(container, $(this).attr('data-form-for')).focus();
+		},
+
+		/**
+		 * Handles radio group selection - we cannot use the browser
+		 * implementation because it relies on using the name attribute.
+		 */
+		_radioClickHandler : function(event){
+			var self = event.data;
+			// try to find container
+			var container = self.element.find($(this).closest('[data-form-group]'));
+			if (container.size()==0) container = self.element;
+			var value = $(this).attr('value');console.log(value);
+			self._getInputsByName(container, $(this).attr('data-form-name')).each(function(){
+				this.checked = ($(this).attr('value') == value);
+			});
 		},
 
 		/**
@@ -141,8 +159,10 @@
 								default:
 									$(this).val(value);
 								}
+								break;
 							case "textarea":
 								$(this).val(value);
+								break;
 							}
 						});
 						break;
@@ -157,6 +177,9 @@
 			this.element.find('[data-form-for]').css('cursor', 'default')
 				.off('click', this._labelClickHandler)
 				.on('click', this, this._labelClickHandler);
+			this.element.find('input[type="radio"]')
+				.off('change', this._radioClickHandler)
+				.on('change', this, this._radioClickHandler);
 			this._setContainerData(data, container);
 		},
 
