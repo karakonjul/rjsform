@@ -123,6 +123,9 @@
 			});
 		},
 
+		/**
+		 * Fills inputs within the container, without going into form groups
+		 */
 		_setContainerData : function(data, container){
 			var self = this;
 			Object.keys(data).forEach(function(key){
