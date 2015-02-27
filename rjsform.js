@@ -173,14 +173,19 @@
 		},
 
 		setData : function(data, container){
+			// if no container specified, use root element
 			if (typeof(container)=='undefined') container = this.element;
+			// let constructors build the form
 			this._processConstructors(data, container);
+			// prepare input labels
 			this.element.find('[data-form-for]').css('cursor', 'default')
 				.off('click', this._labelClickHandler)
 				.on('click', this, this._labelClickHandler);
+			// prepare radio groups
 			this.element.find('input[type="radio"]')
 				.off('change', this._radioClickHandler)
 				.on('change', this, this._radioClickHandler);
+			// set data recursively
 			this._setContainerData(data, container);
 		},
 
