@@ -1,6 +1,8 @@
 # rjsform
 jQuery widget for JavaScript form management
 
+Note: this widget is still in development and things change drastically all the time. Probably the most up-to-date sort-of-documentation is the demo page (demo.html) because that's what I use for testing.
+
 This page will be expanded in the future - for now, examine the demo page in the master branch to see how this works. Below is a very short draft describing the features of this widget.
 
 ## Description
@@ -19,6 +21,6 @@ RJSForm doesn't use any of the standard form attributes in order to avoid contam
 A key feature of the widget is the support for form constructors. Those are used to dynamically build parts of the form before the data is filled in. This is most useful when dealing with lists of identical mini-forms where you need to recreate the list from the data. Possibilities here are really endless - you could also show/hide parts of the form based on the input data, or make a universal form constructor that builds the entire form automatically without using any preexisting HTML markup. See the demo page for a simple example of a form constructor.
 
 ## Branches
-- dev: development branch, unstable.
+- dev: development branch, unstable. Here be dragons!
 - master: release branch, stable. Versions will be tagged here.
 - deploy: deployment branch, stable. This branch will always be in sync with master, but will only contain the rjsform.js file. Suitable for adding as a submodule in another project.
