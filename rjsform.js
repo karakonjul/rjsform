@@ -6,43 +6,15 @@
 	}
 
 	$.widget('rlib.rjsform', {
+
 		options : {
 			data : {},
 			constructors : {}
 		},
+
 		_create : function(){
 			this.setData(this.options.data);
 		},
-
-		/**
-		 * Given a subcontainer and data object, and based on the data-form-name attributes of parent elements,
-		 * find the data object that's meant for the given subcontainer.
-		 * May return null.
-		 * TODO: support [] name suffix
-		 */
-		/* NOT USED ATM
-		_findContainerData : function(container, data){
-			if (container.size()==0) return null;
-			if (container.size()>1) container = container.first();
-			var parents = [];
-			container.parentsUntil(this.element, '[data-form-name]').each(function(){
-				parents.unshift(this);
-			});
-			if (container.is('[data-form-name]')) {
-				parents.unshift(container[0]);
-			}
-			result = data;
-			parents.forEach(function(p){
-				if (result===null) return;
-				var key = $(this).attr('data-form-name');
-				if (typeof(result[key])=='undefined') {
-					result = null;
-				} else {
-					result = result[key];
-				}
-			});
-			return result;
-		},*/
 
 		/**
 		 * Find elements matching the selector without going into [data-form-name] elements.
