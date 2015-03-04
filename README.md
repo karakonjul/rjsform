@@ -14,7 +14,9 @@ $.rjsform is a jQuery widget that allows setting data to and retrieving it from 
 </div>
 ```
 
-RJSForm doesn't use any of the standard form attributes in order to avoid contaminating existing \<form\> elements. This means that radiogroups need to be implemented using pure JS, which is automatically done by the widget. Same goes for labels.
+RJSForm doesn't use any of the standard form attributes in order to avoid contaminating existing \<form\> elements. This means that radiogroups need to be implemented using pure JS, which is automatically done by the widget. Same goes for labels - you can link a label to a control with the data-form-for attribute using the name of the target control.
+
+A key feature of the widget is the support for form constructors. Those are used to dynamically build parts of the form before the data is filled in. This is most useful when dealing with lists of identical mini-forms where you need to recreate the list from the data. Possibilities here are really endless - you could also show/hide parts of the form based on the input data, or make a universal form constructor that builds the entire form automatically without using any preexisting HTML markup. See the demo page for a simple example of a form constructor.
 
 ## Branches
 - dev: development branch, unstable.
