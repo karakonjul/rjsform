@@ -103,7 +103,7 @@
 		_radioClickHandler : function(event){
 			var self = event.data;
 			// try to find container
-			var container = self.element.find($(this).closest('[data-form-name]'));
+			var container = self.element.find($(this).parent().closest('[data-form-name]'));
 			if (container.size()==0) container = self.element;
 			var value = $(this).attr('value');
 			self._getInputsByName(container, $(this).attr('data-form-name')).each(function(){
@@ -160,7 +160,6 @@
 		 */
 		_setElementValue : function(element, value){
 			element.each(function(){
-				//console.log(this, value);
 				switch (this.tagName.toLowerCase()) {
 					case "select":
 					case "textarea":
@@ -222,11 +221,11 @@
 			// let constructors build the form
 			this._processConstructors(data, container);
 			// prepare input labels
-			this._findNoRecursive(this.element, '[data-form-for]').css('cursor', 'default')
+			this._findNoRecursive(container, '[data-form-for]').css('cursor', 'default')
 				.off('click', this._labelClickHandler)
 				.on('click', this, this._labelClickHandler);
 			// prepare radio groups
-			this._findNoRecursive(this.element, 'input[type="radio"]')
+			this._findNoRecursive(container, 'input[type="radio"]')
 				.off('change', this._radioClickHandler)
 				.on('change', this, this._radioClickHandler);
 			// set data recursively
