@@ -146,14 +146,19 @@
 				</table>
 			</fieldset>
 
-			<fieldset data-form-constructor="demo_constr_2" data-form-constructor-key="constructor_data_2">
+			<fieldset data-form-name="constructor_data_2" data-form-constructor="demo_constr_2">
 				<legend>Array constructor</legend>
 				<p>Data is an array</p>
 				<table>
 					<tbody>
-						<tr class="item-template">
-							<th class="title"></th>
-							<td><input type="text" /></td>
+						<tr class="item-template" data-form-ignore data-form-name="[]">
+							<td><input type="checkbox" data-form-name="enabled" /></td>
+							<td><select data-form-name="type">
+								<option value="1">Small text</option>
+								<option value="2">Large text</option>
+								<option value="3">Textarea</option>
+							</select></td>
+							<td><input type="text" data-form-name="value"></td>
 						</tr>
 					</tbody>
 				</table>
