@@ -14,7 +14,7 @@ $.rjsform is a jQuery widget that allows setting data to and retrieving it from 
 </div>
 ```
 
-RJSForm doesn't use any of the standard form attributes in order to avoid contaminating existing <form> elements. This means that radiogroups need to be implemented using pure JS, which is automatically done by the widget.
+RJSForm doesn't use any of the standard form attributes in order to avoid contaminating existing \<form\> elements. This means that radiogroups need to be implemented using pure JS, which is automatically done by the widget. Same goes for labels.
 
 ## Branches
 - dev: development branch, unstable.
