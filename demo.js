@@ -30,22 +30,14 @@ jQuery(function($){
 		var list = template.parent();
 		template.hide();
 		list.children().not(template).remove();
-
-		console.log(data[template.attr('data-form-group')]);
-
+		if (!Array.isArray(data)) return;
 		try {
-			Object.keys(data).forEach(function(key){
+			data.forEach(function(key){
 				var item = template.clone();
 				item
-					.find('input')
-					.attr('data-form-name', key)
-					.val(data[key])
-					.end()
-					.find('.title')
-					.text(key)
-					.end()
 					.appendTo(list)
 					.removeClass('item-template')
+					.removeAttr('data-form-ignore')
 					.show();
 			});
 		} catch (error) {
