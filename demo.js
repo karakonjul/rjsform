@@ -77,7 +77,12 @@ jQuery(function($){
 			multiselect : [2],
 			checkbox : false,
 			radio : 1
-		}
+		},
+		group2 : [
+			{tick:true,  rd:1},
+			{tick:false, rd:2},
+			{tick:true,  rd:3}
+		]
 	}; // demo_data
 
 	$('#form_container').rjsform({
