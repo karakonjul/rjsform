@@ -238,7 +238,7 @@
 			var self = this;
 			var data = {};
 
-			this._findNoRecursive(container, 'input,select,textarea').filter('[data-form-name]').each(function(){
+			var inputs = this._findNoRecursive(container, 'input,select,textarea').filter('[data-form-name]').each(function(){
 				var val = null;
 				if (this.tagName.toLowerCase()=='input') {
 					switch (this.type.toLowerCase()) {
@@ -271,15 +271,21 @@
 				}
 			});
 
-			this._findNoRecursive(container, '[data-form-name]').each(function(){
+			this._findNoRecursive(container, '[data-form-name]').not(inputs).each(function(){
 				var attr = $(this).attr('data-form-name');
-				if (attr.match(/\[\]$/)) { // ends with []
+				if (attr=="[]") { // is []
+					attr = $(this).parent().closest('[data-form-name]').attr('data-form-name');
+					if (!Array.isArray(data)) {
+						data = [];
+					}
+					data.push(self.getData($(this)));
+				} else if (attr.match(/\[\]$/)) { // ends with []
 					attr = attr.substr(0, attr.length - 2); // remove last 2 chars
 					if (!Array.isArray(data[attr])) {
 						data[attr] = [];
 					}
 					data[attr].push(self.getData($(this)));
-				} else {
+				} else { // normal group
 					data[attr] = self.getData($(this));
 				}
 			});
