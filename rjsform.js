@@ -105,6 +105,50 @@
 			});
 		},
 
+		_clearInputs : function(container){
+			if (typeof(container)=='undefined') {
+				container = this.element;
+			}
+			this.element.find('input,select,textarea').filter(function(){
+				if ($(this).parentsUntil(container, '[data-form-ignore]').size()>0) {
+					return false;
+				}
+				if ($(this).is('[data-form-ignore]')) {
+					return false;
+				}
+				return true;
+			}).each(function(){
+
+				switch (this.tagName.toLowerCase()) {
+
+					case "select":
+						if ($(this).is('[multiple]')) {
+							$(this).val([]);
+						} else {
+							$(this).val('');
+						}
+						break;
+
+					case "input":
+						switch (this.type.toLowerCase()) {
+							case "checkbox":
+							case "radio":
+								this.checked = false;
+								break;
+							default:
+								$(this).val('');
+						}
+						break;
+
+					case "textarea":
+						$(this).val('');
+						break;
+
+				}
+
+			});
+		},
+
 		/**
 		 * When a data object is actually an array
 		 */
@@ -189,7 +233,10 @@
 
 		setData : function(data, container){
 			// if no container specified, use root element
-			if (typeof(container)=='undefined') container = this.element;
+			if (typeof(container)=='undefined') {
+				this._clearInputs();
+				container = this.element;
+			}
 			// let constructors build the form
 			this._processConstructors(data, container);
 			// prepare input labels
@@ -263,7 +310,12 @@
 			});
 
 			return data;
+		},
+
+		clear : function(){
+			this._clearInputs();
 		}
+
 	});
 
 })(jQuery);
