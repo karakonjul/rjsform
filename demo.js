@@ -109,4 +109,9 @@ jQuery(function($){
 		}
 	});
 
+	// clear data
+	$('#json_viewer input[name="clear"]').click(function(){
+		$('#form_container').rjsform('clear');
+	});
+
 });
