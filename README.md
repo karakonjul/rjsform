@@ -1,5 +1,9 @@
-# rjsform
-jQuery widget for JavaScript form management
+# What is RJSForm?
+RJSForm is a jQuery widget that expands upon the standard HTML forms and allows you to build extensive hierarchy of nested forms with a handful of simple markup rules. Getting data from and putting data in the form is as simple as calling a widget method.
+
+This widget is targeted at client-side applications where forms work in a JavaScript context, as opposed to the standard HTML forms which are submitted to a server-side script. With RJSForm, no \<form\> elements or "name" attributes need to be used, therefore there should be no conflicts with standard HTML forms.
+
+Download: [rjsform.js](https://raw.githubusercontent.com/karakonjul/rjsform/master/rjsform.js)
 
 Note: this widget is still in development and things change drastically all the time. Probably the most up-to-date sort-of-documentation is the demo page (demo.html) because that's what I use for testing.
 
